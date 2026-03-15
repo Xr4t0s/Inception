@@ -8,4 +8,4 @@ apt-get install -y \
 mkcert -install
 mkcert nitadros.42.fr 127.0.0.1 localhost ::1
 
-mkdir -p ../certs && mv *pem ../certs/
+mkdir -p ./requirements/nginx/certs && mv *pem ./requirements/nginx/certs
