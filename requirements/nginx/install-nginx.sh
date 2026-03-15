@@ -21,7 +21,7 @@ apt-get install nginx -y
 
 # Install CA store and create a certificate for localhost
 mkcert -install
-mkcert localhost 127.0.0.0 ::1
+mkcert localhost 127.0.0.0 ::1 nitadros.42.fr
 
 # Adding files to nginx config
 mkdir -p /etc/nginx/certs
