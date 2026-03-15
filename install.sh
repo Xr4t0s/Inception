@@ -6,7 +6,7 @@ set -euo pipefail
 # Update environnement
 sudo apt-get update && sudo apt-get upgrade -y
 
-sudo apt install snapd
+sudo apt install snapd mkcert libnss3 -y
 
 sudo systemctl start snapd
 
@@ -16,3 +16,7 @@ sudo snap install docker
 echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
 sudo docker compose up -d --build
+
+docker cp nginx:/root/.local/share/mkcert/rootCA.pem .
+sudo cp rootCA.pem /usr/local/share/ca-certificates/mkcert.crt
+sudo update-ca-certificates
