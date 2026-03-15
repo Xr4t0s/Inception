@@ -28,7 +28,5 @@ echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
 sudo docker compose up -d --build
 
-CAROOT=$(sudo docker exec nginx mkcert -CAROOT)
-sudo docker exec nginx cat $CAROOT/rootCA.pem > ./rootCA.pem
-sudo cp rootCA.pem /usr/local/share/ca-certificates/mkcert.crt
+sudo cp ./requirements/nginx/certs/nitadros.42.fr.pem /usr/local/share/ca-certificates/mkcert.crt
 sudo update-ca-certificates
