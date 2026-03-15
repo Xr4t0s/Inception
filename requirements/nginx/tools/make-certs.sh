@@ -1,5 +1,4 @@
 #!/bin/bash
-set -euo pipefail
 
 apt-get install -y \
 	mkcert libnss3-tools
