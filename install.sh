@@ -6,7 +6,10 @@
 # Update environnement
 sudo apt-get update && sudo apt-get upgrade -y
 
-sudo apt install snapd mkcert libnss3-tools -y
+sudo apt install snapd mkcert libnss3-tools ntpsec-ntpdate -y
+
+# For snapshots
+sudo ntpdate pool.ntp.org
 
 sudo systemctl start snapd
 
