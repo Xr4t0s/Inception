@@ -12,7 +12,7 @@ sudo ntpdate pool.ntp.org
 
 sudo systemctl start snapd
 
-sudo snap install docker
+sudo snap install docker chromium
 
 if ! groups | grep docker; then
 	sudo groupadd docker
@@ -28,5 +28,7 @@ echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
 cp $(mkcert -CAROOT)/rootCA.pem /usr/local/share/ca-certificates/mkcert.crt
 sudo update-ca-certificates
+
+mkcert -install
 
 sudo docker compose up -d --build
