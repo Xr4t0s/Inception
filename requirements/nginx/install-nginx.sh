@@ -21,11 +21,11 @@ apt-get install nginx -y
 
 # Install CA store and create a certificate for localhost
 mkcert -install
-mkcert localhost 127.0.0.0 ::1 nitadros.42.fr
+mkcert nitadros.42.fr
 
 # Adding files to nginx config
 mkdir -p /etc/nginx/certs
-cp ./localhost+2.pem ./localhost+2-key.pem /etc/nginx/certs/
+cp ./nitadros.42.fr.pem ./nitadros.42.fr-key.pem /etc/nginx/certs/
 cp /tmp/conf/nginx.conf /etc/nginx/nginx.conf
 cp /tmp/conf/ssl-params.conf /etc/nginx/ssl-params.conf
 
