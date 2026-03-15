@@ -21,12 +21,12 @@ if ! groups "$USER" | grep docker; then
 	sudo usermod -aG docker $USER
 fi
 
-sudo bash ./requirements/nginx/tools/make-certs.sh
+bash ./requirements/nginx/tools/make-certs.sh
 
 # Adding hostnames
 echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
-sudo docker compose up -d --build
-
-sudo cp $(mkcert -CAROOT)/rootCA.pem /usr/local/share/ca-certificates/mkcert.crt
+cp $(mkcert -CAROOT)/rootCA.pem /usr/local/share/ca-certificates/mkcert.crt
 sudo update-ca-certificates
+
+sudo docker compose up -d --build

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get install -y \
+sudo apt-get install -y \
 	mkcert libnss3-tools
 
 # Install CA store and create a certificate for localhost
