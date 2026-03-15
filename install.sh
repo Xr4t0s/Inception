@@ -12,7 +12,8 @@ sudo ntpdate pool.ntp.org
 
 sudo systemctl start snapd
 
-sudo snap install docker chromium
+sudo snap install docker
+sudo snap install chromium
 
 if ! groups | grep docker; then
 	sudo groupadd docker
