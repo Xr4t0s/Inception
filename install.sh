@@ -17,6 +17,6 @@ echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
 sudo docker compose up -d --build
 
-docker cp nginx:/root/.local/share/mkcert/rootCA.pem .
+sudo docker cp nginx:/root/.local/share/mkcert/rootCA.pem .
 sudo cp rootCA.pem /usr/local/share/ca-certificates/mkcert.crt
 sudo update-ca-certificates
