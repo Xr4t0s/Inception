@@ -12,9 +12,9 @@ sudo systemctl start snapd
 
 sudo snap install docker
 
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
+sudo groupadd docker || true
+sudo usermod -aG docker $USER || true
+newgrp docker || true
 
 # Adding hostnames
 echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
