@@ -25,7 +25,8 @@ mkcert nitadros.42.fr
 
 # Adding files to nginx config
 mkdir -p /etc/nginx/certs
-cp ./nitadros.42.fr.pem ./nitadros.42.fr-key.pem /etc/nginx/certs/
+cat ./nitadros.42.fr.pem $(mkcert -CAROOT)/rootCA.pem > fullchain.pem  
+cp ./fullchain.pem ./nitadros.42.fr-key.pem /etc/nginx/certs/
 cp /tmp/conf/nginx.conf /etc/nginx/nginx.conf
 cp /tmp/conf/ssl-params.conf /etc/nginx/ssl-params.conf
 
