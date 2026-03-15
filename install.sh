@@ -6,7 +6,7 @@
 # Update environnement
 sudo apt-get update && sudo apt-get upgrade -y
 
-sudo apt install snapd -y
+sudo apt install snapd mkcert libnss3-tools -y
 
 sudo systemctl start snapd
 
@@ -19,6 +19,7 @@ if ! groups "$USER" | grep docker; then
 	sudo usermod -aG docker $USER
 fi
 
+bash ./requirements/nginx/tools/make-certs.sh
 # Adding hostnames
 echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
