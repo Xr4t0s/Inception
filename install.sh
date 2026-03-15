@@ -11,5 +11,6 @@ sudo apt-get install snap -y
 # Installing docker
 sudo snap install docker
 
+# Adding hostnames
 echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
  
