@@ -17,7 +17,6 @@ if ! groups | grep docker; then
 fi
 if ! groups "$USER" | grep docker; then
 	sudo usermod -aG docker $USER
-	newgrp docker
 fi
 
 # Adding hostnames
@@ -25,7 +24,7 @@ echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
 sudo docker compose up -d --build
 
-CAROOT=$(docker exec "$CONTAINER" mkcert -CAROOT)
+CAROOT=$(docker exec nginx mkcert -CAROOT)
 sudo docker cp "nginx:$CAROOT/rootCA.pem" .
 sudo cp rootCA.pem /usr/local/share/ca-certificates/mkcert.crt
 sudo update-ca-certificates
