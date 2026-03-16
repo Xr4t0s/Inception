@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sed -i 's|/run/php/php.*sock|9000|' /etc/php/*/fpm/pool.d/www.conf
+
 until mysqladmin ping -h mariadb --silent; do
 	sleep 1
 done
