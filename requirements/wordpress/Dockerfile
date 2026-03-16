@@ -10,6 +10,10 @@ RUN curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x ./wp-cli.phar
 RUN mv ./wp-cli.phar /usr/local/bin/wp-cli
 
+COPY . .
+
+RUN ./install-wordpress.sh
+
 RUN php /usr/local/bin/wp-cli core install \
 	--path="/var/www/html/" \
   --url="https://${DOMAIN_NAME}" \
