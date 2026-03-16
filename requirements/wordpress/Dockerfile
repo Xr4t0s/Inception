@@ -2,7 +2,7 @@ FROM debian:bookworm
 
 RUN apt update
 
-RUN apt install curl php8.2-fpm php-mysql -y
+RUN apt install curl unzip php8.2-fpm php-mysql -y
 
 WORKDIR /tmp
 
