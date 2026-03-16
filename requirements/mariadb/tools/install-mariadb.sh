@@ -21,4 +21,4 @@ EOSQL
 mysqladmin --protocol=socket -S /run/mysqld/mysqld.sock -uroot shutdown
 wait "$pid"
 
-mariadbd --user=mysql --bind-address=0.0.0.0
+exec mariadbd --user=mysql --bind-address=0.0.0.0
