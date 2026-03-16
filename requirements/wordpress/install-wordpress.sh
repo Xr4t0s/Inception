@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-wget https://wordpress.org/latest.zip
+curl https://wordpress.org/latest.zip -o ./latest.zip
 unzip ./latest.zip
 
 rm -rf /var/www/html/* /var/www/html/.*
