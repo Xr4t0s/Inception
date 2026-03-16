@@ -1,11 +1,8 @@
 FROM debian:bookworm
 
 RUN apt update && apt install -y \
-	curl \
-	unzip \
-	php8.2-fpm \
-	php-mysql \
-	mariadb-client
+	curl unzip iproute2 procps \
+	php8.2-fpm php-mysql mariadb-client
 
 # installer wp-cli
 RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
