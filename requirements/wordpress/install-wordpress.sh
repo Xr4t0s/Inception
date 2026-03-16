@@ -4,7 +4,7 @@ set -euo pipefail
 curl https://wordpress.org/latest.zip -o ./latest.zip
 unzip ./latest.zip
 
-rm -rf /var/www/html/* /var/www/html/.*
+rm -rf /var/www/html/*
 mv wordpress/* /var/www/html/
 chown -R www-data:www-data /var/www/html
 
