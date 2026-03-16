@@ -43,7 +43,11 @@ networks:
 volumes:
   wordpress_data:
     driver_opts:
+      type: "none"
+      o: "rw"
       device: "${HOME}/data/wp"
   mariadb:
     driver_opts:
+      type: "none"
+      o: "rw"
       device: "${HOME}/data/db"
