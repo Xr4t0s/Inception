@@ -11,6 +11,7 @@ RUN chmod +x ./wp-cli.phar
 RUN mv ./wp-cli.phar /usr/local/bin/wp-cli
 
 RUN php /usr/local/bin/wp-cli core install \
+	--path="/var/www/html/" \
   --url="https://${DOMAIN_NAME}" \
   --title="Inception" \
   --admin_user="${WP_ADMIN_USER}" \
@@ -19,7 +20,7 @@ RUN php /usr/local/bin/wp-cli core install \
   --allow-root \
 	&& php /usr/local/bin/wp-cli user create "$WP_USER" "$WP_USER_EMAIL" \
 		--user_pass="$WP_USER_PASSWORD" \
-		--path=/website \
+		--path="/var/www/html/" \
 		--allow-root	
 
 
