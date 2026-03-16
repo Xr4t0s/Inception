@@ -2,6 +2,8 @@ FROM debian:bookworm
 
 RUN apt update && apt full-upgrade -y
 
+RUN apt install php8.4-cli -y
+
 WORKDIR /tmp
 
 COPY . .
