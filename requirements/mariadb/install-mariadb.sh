@@ -1,15 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-apt-get install -y \
-	curl iproute2 procps \
-	mariadb-server mariadb-client
-
-sed -i 's|bind-address = 127.0.0.1|bind-address = 0.0.0.0|' /etc/mysql/mariadb.conf.d/50-server.cnf
-
-mkdir -p /run/mysqld
-chown -R mysql:mysql /run/mysqld /var/lib/mysql
-
 if [ ! -d /var/lib/mysql ]; then
 	echo "Initializing database..."
 	mariadbd-install-db --user-mysql --datadir=/var/lib/mysql --skip-test-db

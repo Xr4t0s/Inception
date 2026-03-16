@@ -2,6 +2,7 @@ services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx
+    restart: unless-stopped
     ports:
       - "443:443"
     networks:
@@ -14,6 +15,7 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
+    restart: unless-stopped
     ports:
       - "9000"
     networks:
@@ -26,6 +28,7 @@ services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
+    restart: unless-stopped
     ports:
       - "3306"
     networks:
