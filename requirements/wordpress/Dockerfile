@@ -10,8 +10,6 @@ COPY . .
 
 RUN bash ./install-wordpress.sh
 
-COPY ./conf/wp-config.php /var/www/html/wp-config.php
-
 RUN rm -rf /tmp/*
 
 CMD ["php-fpm8.2", "-F"]
