@@ -42,12 +42,14 @@ networks:
 
 volumes:
   wordpress_data:
+    driver: local
     driver_opts:
-      type: "none"
-      o: "rw"
-      device: "${HOME}/data/wp"
+      type: none
+      o: bind
+      device: /home/inception/data/wp
   mariadb:
+    driver: local
     driver_opts:
-      type: "none"
-      o: "rw"
-      device: "${HOME}/data/db"
+      type: none
+      o: bind
+      device: /home/inception/data/db
