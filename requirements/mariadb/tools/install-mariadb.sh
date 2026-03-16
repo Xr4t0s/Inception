@@ -1,16 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-if [ ! -d /var/lib/mysql ]; then
-	echo "Initializing database..."
-	mariadbd-install-db --user-mysql --datadir=/var/lib/mysql --skip-test-db
-fi
-
-echo "Starting temporary MariaDB..."
 mariadbd --user=mysql --datadir=/var/lib/mysql --socket=/run/mysqld/mysqld.sock --skip-networking &
 pid="$!"
 
-# Attend que ça réponde
 for i in {1..30}; do
   if mysql --protocol=socket -S /run/mysqld/mysqld.sock -uroot -e "SELECT 1" &>/dev/null; then
     break
@@ -18,13 +11,14 @@ for i in {1..30}; do
   sleep 1
 done
 
-# Création base + user
 mysql --protocol=socket -S /run/mysqld/mysqld.sock -uroot <<-EOSQL
-	CREATE DATABASE IF NOT EXISTS wordpress;
-	CREATE USER IF NOT EXISTS 'wpuser'@'%' IDENTIFIED BY 'password';
-	GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'%';
+	CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
+	CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
+	GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
 	FLUSH PRIVILEGES;
 EOSQL
 
 mysqladmin --protocol=socket -S /run/mysqld/mysqld.sock -uroot shutdown
 wait "$pid"
+
+mariadbd --user=mysql --bind-address=0.0.0.0

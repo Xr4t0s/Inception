@@ -8,8 +8,6 @@ RUN sed -i 's|bind-address = 127.0.0.1|bind-address = 0.0.0.0|' /etc/mysql/maria
 RUN mkdir -p /run/mysqld && \
 	chown -R mysql:mysql /run/mysqld /var/lib/mysql
 
-COPY . .
+COPY ./tools/install-mariadb.sh /install.sh
 
-RUN bash ./install-mariadb.sh
-
-CMD ["mariadbd", "--user=mysql", "--bind-address=0.0.0.0"]
+CMD ["bash", "/install.sh"]
