@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt update && apt install php8.2-fpm -y
+
 until mysqladmin ping -h mariadb --silent; do
 	sleep 1
 done
@@ -37,4 +39,4 @@ if [ ! -f wp-config.php ]; then
 
 fi
 
-exec php-fpm8.2 -F
+exec php8.2-fpm -F
