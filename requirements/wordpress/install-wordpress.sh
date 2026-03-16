@@ -12,7 +12,7 @@ sed -i 's|/run/php/php.*sock|9000|' /etc/php/*/fpm/pool.d/www.conf
 
 wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-php8.4-cli ./wp-cli.phar
+php-cli ./wp-cli.phar
 
 php /usr/local/bin/wp-cli.phar core install \
   --url="https://${DOMAIN_NAME}" \
