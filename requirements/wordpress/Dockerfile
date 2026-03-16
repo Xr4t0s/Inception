@@ -8,13 +8,13 @@ WORKDIR /tmp
 
 RUN curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o ./wp-cli.phar
 RUN chmod +x ./wp-cli.phar
-RUN mv ./wp-cli.phar /usr/local/bin/wp-cli
+RUN mv ./wp-cli.phar /usr/local/bin/wp
 
 COPY . .
 
 RUN ./install-wordpress.sh
 
-RUN php /usr/local/bin/wp-cli core install \
+RUN wp core install \
 	--path="/var/www/html/" \
   --url="https://${DOMAIN_NAME}" \
   --title="Inception" \
@@ -22,7 +22,7 @@ RUN php /usr/local/bin/wp-cli core install \
   --admin_password="${WP_ADMIN_PASSWORD}" \
   --admin_email="${WP_ADMIN_EMAIL}" \
   --allow-root \
-	&& php /usr/local/bin/wp-cli user create "$WP_USER" "$WP_USER_EMAIL" \
+	&& wp user create "$WP_USER" "$WP_USER_EMAIL" \
 		--user_pass="$WP_USER_PASSWORD" \
 		--path="/var/www/html/" \
 		--allow-root	
