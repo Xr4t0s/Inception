@@ -18,7 +18,7 @@ sudo snap install chromium
 # Create browsers trust store
 chromium --headless
 sleep 3
-pkill chromium
+pkill chrome
 
 # Generate and install certificates
 bash ./requirements/nginx/tools/make-certs.sh
