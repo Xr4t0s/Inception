@@ -26,7 +26,7 @@ bash ./requirements/nginx/tools/make-certs.sh
 # Adding hostnames to map nitadros.42.fr to localhost
 echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
-mkdir -p /home/nitadros/data/{wp,db}
+sudo mkdir -p /home/nitadros/data/{wp,db}
 
 # Starting containers
 sudo docker compose up -d --build
