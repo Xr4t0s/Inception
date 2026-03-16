@@ -15,6 +15,10 @@ sudo systemctl start snapd
 sudo snap install docker
 sudo snap install chromium
 
+chromium &
+sleep 3
+pkill chromium
+
 if ! groups | grep docker; then
 	sudo groupadd docker
 fi
