@@ -5,6 +5,7 @@ curl https://wordpress.org/latest.zip -o ./latest.zip
 unzip ./latest.zip
 
 rm -rf /var/www/html/*
+mkdir -p /var/www/html
 mv wordpress/* /var/www/html/
 chown -R www-data:www-data /var/www/html
 
