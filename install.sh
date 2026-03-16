@@ -23,8 +23,6 @@ pkill chrome
 # Generate and install certificates
 bash ./requirements/nginx/tools/make-certs.sh
 
-mkcert -install
-
 # Adding hostnames to map nitadros.42.fr to localhost
 echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
@@ -33,4 +31,5 @@ sudo mkdir -p /home/inception/data/{wp,db}
 # Starting containers
 sudo docker compose up -d --build
 
-echo "Installed successfully, to run docker without sudo, execute -> newgrp docker"
+echo "Installed successfully, to avoid https alert open \
+	chrome for the first time if not already done, then execute -> mkcert -install"
