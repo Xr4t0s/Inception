@@ -1,11 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
-sudo apt-get update && apt-get upgrade -y && apt-get install -y \
+
+apt-get update && apt-get upgrade -y && apt-get install -y \
 	wget unzip iproute2 procps \
 	php php-fpm php-mysql php-cli php-curl php-gd php-mbstring php-xml php-zip
 
-sudo apt update && sudo apt install php-cli -y 
+apt update && apt install php-cli -y 
 
 wget https://wordpress.org/latest.zip
 unzip ./latest.zip
