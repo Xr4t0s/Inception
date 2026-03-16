@@ -6,12 +6,9 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 
 WORKDIR /tmp
 
-RUN wget https://wordpress.org/latest.zip && unzip ./latest.zip
-RUN rm -rf /var/www/html/* /var/www/html/.*
+COPY . .
 
-COPY ./wordpress/* /var/www/html/
-
-RUN sed -i 's|/run/php/php.*sock|9000|' /etc/php/*/fpm/pool.d/www.conf
+RUN bash ./install-wordpress.sh
 
 COPY ./conf/wp-config.php /var/www/html/wp-config.php
 
