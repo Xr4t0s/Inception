@@ -16,7 +16,7 @@ sudo snap install docker
 sudo snap install chromium
 
 # Create browsers trust store
-chromium --headless
+chromium --headless &
 sleep 3
 pkill chrome
 
