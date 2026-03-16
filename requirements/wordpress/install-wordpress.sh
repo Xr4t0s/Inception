@@ -10,9 +10,7 @@ chown -R www-data:www-data /var/www/html
 
 sed -i 's|/run/php/php.*sock|9000|' /etc/php/*/fpm/pool.d/www.conf
 
-sudo apt install php8.4-cli -y
-
-wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && sudo mv wp-cli.phar
+wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 php8.4-cli ./wp-cli.phar
 

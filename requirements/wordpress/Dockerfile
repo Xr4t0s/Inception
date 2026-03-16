@@ -2,7 +2,7 @@ FROM debian:bookworm
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 	wget unzip iproute2 procps \
-	php php-fpm php-mysql php-cli php-curl php-gd php-mbstring php-xml php-zip
+	php php8.4-cli php-fpm php-mysql php-cli php-curl php-gd php-mbstring php-xml php-zip
 
 WORKDIR /tmp
 
