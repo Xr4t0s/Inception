@@ -1,10 +1,7 @@
 FROM debian:bookworm
 
+# Installing nginx based on documentation
 RUN apt-get update && apt-get upgrade -y
-
-WORKDIR /tmp
-
-COPY . .
 
 RUN apt-get install -y \
 	gnupg2 ca-certificates lsb-release debian-archive-keyring \
@@ -19,10 +16,11 @@ RUN echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
 	
 RUN apt-get update && apt-get install nginx -y
 
+# Nginx is installed, we can override files
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 COPY ./conf/ssl-params.conf /etc/nginx/ssl-params.conf
-
 RUN mkdir -p /etc/nginx/certs
 COPY ./certs/*pem /etc/nginx/certs/
 
+# Overrided config, ready to start
 CMD ["nginx", "-g", "daemon off;"]
