@@ -17,7 +17,9 @@ sudo snap install docker
 sudo snap install chromium
 
 # Create browsers trust store
-bash -c "chromium --headless &; sleep 3; pkill chrome"
+chromium --headless &
+sleep 3
+pkill chrome
 
 # Install CA store and create a certificate for localhost
 mkcert -install
