@@ -23,6 +23,8 @@ pkill chrome
 # Generate and install certificates
 bash ./requirements/nginx/tools/make-certs.sh
 
+mkcert -install
+
 # Adding hostnames to map nitadros.42.fr to localhost
 echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
