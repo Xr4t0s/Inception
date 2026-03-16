@@ -16,14 +16,14 @@ RUN ./install-wordpress.sh
 
 RUN wp core install \
 	--path="/var/www/html/" \
-  --url="https://${DOMAIN_NAME}" \
+  --url="https://nitadros.42.fr" \
   --title="Inception" \
-  --admin_user="${WP_ADMIN_USER}" \
-  --admin_password="${WP_ADMIN_PASSWORD}" \
-  --admin_email="${WP_ADMIN_EMAIL}" \
+  --admin_user="wpuser" \
+  --admin_password="password" \
+  --admin_email="wpuser@inception.fr" \
   --allow-root \
-	&& wp user create "$WP_USER" "$WP_USER_EMAIL" \
-		--user_pass="$WP_USER_PASSWORD" \
+	&& wp user create "test" "test@test.com" \
+		--user_pass="test" \
 		--path="/var/www/html/" \
 		--allow-root	
 
