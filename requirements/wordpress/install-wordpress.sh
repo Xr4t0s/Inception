@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+
 
 curl https://wordpress.org/latest.zip -o ./latest.zip
 unzip ./latest.zip
