@@ -42,4 +42,8 @@ networks:
 
 volumes:
   wordpress_data:
+    driver_opts:
+      device: "${HOME}/data/wp"
   mariadb:
+    driver_opts:
+      device: "${HOME}/data/db"
