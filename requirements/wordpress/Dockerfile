@@ -1,5 +1,7 @@
 FROM debian:bookworm
 
+RUN apt update && apt full-upgrade -y
+
 WORKDIR /tmp
 
 COPY . .
