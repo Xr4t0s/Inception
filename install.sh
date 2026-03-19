@@ -2,6 +2,13 @@
 
 ############ Configure host ############
 
+if [ -f .config ]; then
+	docker compose up -d --build
+	echo "Installed successfully, to avoid https alert open \
+	chrome for the first time if not already done, then execute -> mkcert -install"
+	exit
+fi
+
 # Update environnement
 sudo apt-get update && sudo apt-get upgrade -y
 
@@ -40,6 +47,8 @@ echo "127.0.0.1 nitadros.42.fr" | sudo tee -a /etc/hosts
 
 # Creating volumes folders for mariadb and wordpress
 sudo mkdir -p /home/inception/data/{wp,db}
+
+echo "{\n\t"installed": true\n}" >> .config 
 
 # Starting containers
 sudo docker compose up -d --build
