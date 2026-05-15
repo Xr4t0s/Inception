@@ -9,6 +9,16 @@ if [ -f .config ]; then
 	exit
 fi
 
+if [ ! -f secrets/.shared.env.example ]; then
+	echo "Please do 'cp secrets/.shared.env.example secrets/.shared.env' and complete env variables"
+	exit
+fi
+
+if [ ! -f secrets/.wordpress.env.example ]; then
+	echo "Please do 'cp secrets/.wordpress.env.example secrets/.wordpress.env' and complete env variables"
+	exit
+fi
+
 # Update environnement
 sudo apt-get update && sudo apt-get upgrade -y
 

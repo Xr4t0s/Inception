@@ -5,7 +5,6 @@ all: $(NAME)
 $(NAME):
 	bash ./scripts/install.sh
 
-
 clean:
 	docker compose down
 
