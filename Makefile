@@ -12,6 +12,9 @@ fclean: clean
 	rm .config
 	docker system prune -af
 
+check:
+	docker ps
+
 re: fclean all
 
-.PHONY: all $(NAME) clean fclean re
+.PHONY: all $(NAME) clean fclean check re

@@ -53,10 +53,10 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/inception/data/wp
+      device: /home/${LOGIN}/data/wp
   mariadb:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/inception/data/db
+      device: /home/${LOGIN}/data/db
